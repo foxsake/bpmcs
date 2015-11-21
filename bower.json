@@ -1,0 +1,18 @@
+{
+  "name": "bpmcs",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "https://github.com/foxsake/bpmcs",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "bootstrap-sass-official#~3.3.5"
+  }
+}
