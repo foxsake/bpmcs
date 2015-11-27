@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//test
+Route::get('/github', 'PdfController@github');
+
 //membership application
 Route::get('/apply','ApplicationsController@create');
 Route::post('/apply','ApplicationsController@store');
