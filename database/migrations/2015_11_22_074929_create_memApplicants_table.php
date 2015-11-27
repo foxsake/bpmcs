@@ -18,7 +18,7 @@ class CreateMemApplicantsTable extends Migration
             $table->string('fName');
             $table->string('mName');
             $table->enum('gender',['m','f']);
-            $table->date('memDate');
+            //$table->date('memDate');
             $table->text('addr');
             $table->date('bDay');
             $table->string('religion');
@@ -26,19 +26,26 @@ class CreateMemApplicantsTable extends Migration
             $table->string('spouce');
             $table->string('highestEd');
             $table->string('occupation');
+
             $table->string('beneficiary');
             $table->string('relToMem');
             $table->string('contact');
-            $table->decimal('initShare',14,2);
-            $table->decimal('amntShare',14,2);
+            
+            $table->string('initShare');
+            $table->string('amntShare');
+
             $table->string('initCBU');//check yung mga datatypes
             $table->string('landArea');
             $table->string('credLine');
             $table->string('municipality');
             $table->string('barangay');
             $table->string('ownType');
-            $table->string('termination');
-            $table->enum('status',['associate','regular']);
+            
+            $table->string('email')->unique();
+            //$table->string('termination');
+            //$table->enum('status',['associate','regular']);
+            $table->boolean('accepted');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

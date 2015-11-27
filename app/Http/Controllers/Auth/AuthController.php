@@ -21,6 +21,8 @@ class AuthController extends Controller
     |
     */
 
+    //protected $username = 'username';
+
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
     /**
@@ -42,7 +44,7 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
+            'username' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
         ]);
@@ -57,9 +59,18 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'username' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'memberid' => $data['memberid'],
         ]);
+    }
+
+    protected $redirectPath = '/';
+
+    public function authenticated( \Illuminate\Http\Request $request, \App\User $user ) {
+        flash()->overlay( 'Logged in', "You have been logged in!" );
+        //return redirect()->intended($this->redirectPath());
+        return redirect()->intended($this->redirectPath());
     }
 }

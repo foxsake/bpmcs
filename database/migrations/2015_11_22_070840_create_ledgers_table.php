@@ -14,7 +14,7 @@ class CreateLedgersTable extends Migration
     {
         Schema::create('ledgers', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('account')->unsigned();
+            $table->integer('account_id')->unsigned();
             $table->date('curDate');
             $table->string('particulars');
             $table->string('reference');
@@ -28,7 +28,7 @@ class CreateLedgersTable extends Migration
             $table->decimal('balance');
             $table->timestamps();
 
-            $table->foreign('account')
+            $table->foreign('account_id')
                 ->references('id')
                 ->on('accounts')
                 ->onDelete('cascade');

@@ -18,6 +18,7 @@ class CreateMembersTable extends Migration
             $table->string('fName');
             $table->string('mName');
             $table->enum('gender',['m','f']);
+            
             $table->date('memDate');
             $table->text('addr');
             $table->date('bDay');
@@ -29,16 +30,18 @@ class CreateMembersTable extends Migration
             $table->string('beneficiary');
             $table->string('relToMem');
             $table->string('contact');
-            $table->decimal('initShare',14,2);
-            $table->decimal('amntShare',14,2);
-            $table->string('initCBU');//check yung mga datatypes
+            //$table->string('email')->unique();
+            $table->string('initShare');
+            $table->string('amntShare');
+
+            $table->string('initCBU');
             $table->string('landArea');
             $table->string('credLine');
             $table->string('municipality');
             $table->string('barangay');
             $table->string('ownType');
             $table->string('termination');
-            $table->enum('status',['associate','regular']);
+            $table->enum('status',['Associate','Regular']);
             $table->timestamps();
         });
     }

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAccountsTable extends Migration
+class CreateLoanApplicationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,16 +12,18 @@ class CreateAccountsTable extends Migration
      */
     public function up()
     {
-        Schema::create('accounts', function (Blueprint $table) {
+        Schema::create('loanApplications', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('member_id')->unsigned();
             $table->integer('loan_id')->unsigned();
             $table->string('terms');
             $table->string('comaker');
-            $table->timestamp('dateGranted');
-            $table->timestamp('dueDate');
+            //$table->date('dateGranted');
+            //$table->date('dueDate');
             $table->double('amountGranted');
-            $table->double('balance');
+            //$table->double('balance');
+            $table->softDeletes();
+            $table->boolean('accepted');
             $table->timestamps();
 
             $table->foreign('member_id')
@@ -43,6 +45,6 @@ class CreateAccountsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('accounts');
+        Schema::drop('loanApplications');
     }
 }

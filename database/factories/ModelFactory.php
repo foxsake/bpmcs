@@ -11,11 +11,30 @@
 |
 */
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(App\MemApplicant::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->email,
-        'password' => bcrypt(str_random(10)),
-        'remember_token' => str_random(10),
+        'lName' => $faker->lastName,
+        'fName' => $faker->firstName,
+        'mName' => $faker->lastName,
+        'gender' => $faker->randomElement($array = array ('m','f')),
+        'addr' => $faker->address,
+        'bDay' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'religion' => $faker->word,
+        'civilStatus' => $faker->word,
+        'spouce' => $faker->name,
+        'highestEd' => $faker->word,
+        'occupation' => $faker->word,
+        'beneficiary' => $faker->name,
+        'relToMem' => $faker->word,
+        'contact' => $faker->phoneNumber,
+        'initShare' => $faker->randomNumber($nbDigits = NULL),
+        'amntShare' => $faker->randomNumber($nbDigits = NULL),
+        'initCBU' => $faker->randomNumber($nbDigits = NULL),
+        'landArea' => $faker->randomNumber($nbDigits = NULL),
+        'credLine' => $faker->randomNumber($nbDigits = NULL),
+        'municipality' => $faker->word,
+        'barangay' => $faker->word,
+        'ownType' => $faker->word,
+        'email' => $faker->email
     ];
 });
