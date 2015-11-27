@@ -43,9 +43,12 @@ $router->group([
   resource('admin/applications', 'LoanApplicationController');
   resource('admin/members', 'MemberController');
   resource('admin/loans', 'LoanController');
+  resource('admin/ledger', 'LedgerController');
+  get('admin/print/{id}','PrintController@printLedger');
   get('admin',function(){
   	return view('admin.home');
   });
+  //resource('admin/loans', 'LoanController');
   //resource('admin/tag', 'TagController');
   //get('admin/upload', 'UploadController@index');
 });

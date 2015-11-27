@@ -6,10 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Account;
+use App\Http\Requests\LedgerRequest;
 use App\Ledger;
+use App\Account;
 
-class LoanController extends Controller
+class LedgerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +19,7 @@ class LoanController extends Controller
      */
     public function index()
     {
-        $accs = Account::all();
-        //dd($accs);
-        return view('admin.loan.index',compact('accs'));
+        //
     }
 
     /**
@@ -30,7 +29,7 @@ class LoanController extends Controller
      */
     public function create()
     {
-        //
+        //return view('admin.ledger.create');
     }
 
     /**
@@ -39,9 +38,37 @@ class LoanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LedgerRequest $request)
     {
-        //
+        $acc = Account::find($request->id);
+        $ledger = new Ledger();
+        $ledger->account_id = $request->id;
+        $ledger->curDate = date('Y-m-d');
+        $ledger->particulars = $request->particulars;//todo
+        $ledger->reference = $request->reference;//todo
+        if($request->actn=='true'){
+            $ledger->avaiment = $request->cash;
+            $ledger->principal = 0;
+            $acc->balance += $request->cash;
+            $ledger->balance = $acc->balance;
+        }
+        else{
+            $ledger->principal = $request->cash;
+            $ledger->avaiment = 0;   
+            $acc->balance -= $request->cash;
+            $ledger->balance = $acc->balance;
+        }
+        //daya
+        $ledger->amountPayed = 0;
+        $ledger->interestDue = 0.0;
+        $ledger->penaltyDue = 0.0;
+        
+        $ledger->interestPayed = 0.0;
+        $ledger->penaltyPayed = 0.0;
+        $ledger->save();
+
+        return redirect('admin/loans/'.$request->id);
+        //dd($request);
     }
 
     /**
@@ -52,10 +79,7 @@ class LoanController extends Controller
      */
     public function show($id)
     {
-        $acc = Account::find($id);
-        $ledgers = Ledger::where('account_id',$acc->id)->get();
-        //dd($ledgers);
-        return view('admin.loan.show',compact('ledgers'),compact('acc'));
+        return view('admin.ledger.create',compact('id'));
     }
 
     /**

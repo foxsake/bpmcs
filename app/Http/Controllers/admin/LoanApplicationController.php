@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\LoanApplication;
 use App\Account;
+use App\Ledger;
 
 class LoanApplicationController extends Controller
 {
@@ -30,7 +31,7 @@ class LoanApplicationController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -57,6 +58,21 @@ class LoanApplicationController extends Controller
             $acc->dueDate->addDays($acc->terms);
             $acc->balance = $acc->amountGranted;
             $acc->save();
+            $ledger = new Ledger();
+            $ledger->account_id = $acc->id;
+            $ledger->curDate = date('Y-m-d');
+            $ledger->particulars = 'Emergency';//todo
+            $ledger->reference = 'payroll';//todo
+            $ledger->avaiment = $acc->amountGranted;
+            $ledger->amountPayed = 0;
+            $ledger->interestDue = 0.0;
+            $ledger->penaltyDue = 0.0;
+            $ledger->principal = 0.0;
+            $ledger->interestPayed = 0.0;
+            $ledger->penaltyPayed = 0.0;
+            $ledger->balance = $acc->amountGranted;
+            $acc->balance = $acc->amountGranted;//toodo
+            $ledger->save();
         }
         $appli->delete();
         flash()->success("Success!");
@@ -71,7 +87,7 @@ class LoanApplicationController extends Controller
      */
     public function show($id)
     {
-        //
+        //Ledger::find($id);
     }
 
     /**

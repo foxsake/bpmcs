@@ -15,7 +15,7 @@ class CreateLedgersTable extends Migration
         Schema::create('ledgers', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('account_id')->unsigned();
-            $table->date('curDate');
+            $table->timestamp('curDate');
             $table->string('particulars');
             $table->string('reference');
             $table->decimal('avaiment');

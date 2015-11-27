@@ -41,7 +41,7 @@
 				{{$acc->balance}}
 			</td>
 			<td>
-				<a href="#" class="btn btn-primary">View</a>
+				<a href="/admin/loans/{{$acc->id}}" class="btn btn-primary">View</a>
 			</td>
 		</tr>
 		@endforeach
