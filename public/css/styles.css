@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:100);
 @charset "UTF-8";
 
 /*!
@@ -8329,4 +8330,34 @@ button.close {
   .hidden-print {
     display: none !important;
   }
+}
+
+.content {
+  text-align: center;
+  display: inline-block;
+  font-family: 'Lato';
+  font-weight: 100;
+}
+
+.title {
+  font-size: 96px;
+}
+
+.subtitle {
+  font-size: 55px;
+}
+
+.content > p {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.content > p > a {
+  text-decoration: none;
+  color: #969696;
+}
+
+.content > p > a:hover {
+  text-decoration: none;
+  color: black;
 }

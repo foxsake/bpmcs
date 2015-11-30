@@ -1,5 +1,5 @@
 <ul class="nav navbar-nav">
-  @if (Auth::check())
+  @if (Auth::check()&&Auth::user()->isAdmin())
     <li @if (Request::is('admin/applicants*')) class="active" @endif>
       <a href="/admin/applicants">Membership Applications</a>
     </li>
@@ -13,15 +13,27 @@
       <a href="/admin/loans">Loans</a>
     </li>
   @endif
+    @if (Auth::check()&&!Auth::user()->isAdmin())
+    <li @if (Request::is('account*')) class="active" @endif>
+      <a href="/account">Accounts</a>
+    </li>
+  @endif
 </ul>
 
 <ul class="nav navbar-nav navbar-right">
   @if (Auth::guest())
+    <li><a href="/apply">Apply</a></li>
     <li><a href="/auth/login">Login</a></li>
   @else
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-         aria-expanded="false">{{Auth::user()->email}}
+         aria-expanded="false">
+        @if(Auth::user()->isAdmin())
+          Administrator
+        @else
+         {{Auth::user()->email}}
+        @endif
+
         <span class="caret"></span>
       </a>
       <ul class="dropdown-menu" role="menu">

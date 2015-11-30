@@ -57,7 +57,7 @@ class ApplicantController extends Controller
             $mem->bDay = $appli->bDay;
             $mem->religion = $appli->religion;
             $mem->civilStatus = $appli->civilStatus;
-            $mem->spouce = $appli->spouce;
+            $mem->spouse = $appli->spouse;
             $mem->highestEd = $appli->highestEd;
             $mem->occupation= $appli->occupation;
             $mem->beneficiary= $appli->beneficiary;

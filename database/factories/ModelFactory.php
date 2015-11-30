@@ -21,7 +21,7 @@ $factory->define(App\MemApplicant::class, function (Faker\Generator $faker) {
         'bDay' => $faker->date($format = 'Y-m-d', $max = 'now'),
         'religion' => $faker->word,
         'civilStatus' => $faker->word,
-        'spouce' => $faker->name,
+        'spouse' => $faker->name,
         'highestEd' => $faker->word,
         'occupation' => $faker->word,
         'beneficiary' => $faker->name,

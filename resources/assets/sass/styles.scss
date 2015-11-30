@@ -1,3 +1,33 @@
 //@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 @import "vendor/bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
+@import url(https://fonts.googleapis.com/css?family=Lato:100);
 
+.content {
+    text-align: center;
+    display: inline-block;
+    font-family: 'Lato';
+    font-weight: 100;
+}
+
+.title{
+    font-size: 96px;
+}
+
+.subtitle{
+    font-size: 55px;
+}
+
+.content>p{
+    font-size: 25px;
+    font-weight: bold; 
+}
+
+.content>p>a{
+    text-decoration: none;
+    color: rgb(150,150,150);
+}
+
+.content>p>a:hover{
+    text-decoration: none;
+    color: rgb(0,0,0);
+}

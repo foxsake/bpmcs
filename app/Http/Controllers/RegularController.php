@@ -21,7 +21,8 @@ class RegularController extends Controller
      */
     public function index()
     {
-        $accs = Account::find(Auth::user()->id);
+        $accs = Auth::user()->member->accounts;
+        //dd($accs);
         return view('regular.index',compact('accs'));
     }
 

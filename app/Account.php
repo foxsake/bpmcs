@@ -7,7 +7,6 @@ use Carbon\Carbon;
 
 class Account extends Model
 {
-
     protected $dates = ['dateGranted','dueDate'];
 
     public function setdateGrantedAttribute($date){
@@ -17,8 +16,6 @@ class Account extends Model
     public function setdueDateAttribute($date){
         $this->attributes['dueDate'] = Carbon::parse($date);
     }
-
-    
 
     public function member()
     {

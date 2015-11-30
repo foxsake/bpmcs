@@ -32,7 +32,7 @@
 				{{$acc->dateGranted->toDateString()}}
 			</td>
 			<td>
-				{{Carbon\Carbon::now()->addDays($acc->terms)->diffForHumans()}}
+				{{Carbon\Carbon::now()->diffForHumans($acc->dueDate)}}//TODO
 			</td>
 			<td>
 				{{$acc->comaker}}

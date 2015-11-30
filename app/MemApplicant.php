@@ -17,7 +17,7 @@ class MemApplicant extends Model
         'bDay',
         'religion',
         'civilStatus',
-        'spouce',
+        'spouse',
         'highestEd',
         'occupation',
         'beneficiary',

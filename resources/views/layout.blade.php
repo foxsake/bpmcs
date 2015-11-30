@@ -5,7 +5,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{{ config('blog.title') }} Bantug-PMPC</title>
+  @if(isset($title))
+    <title>{{ $title }} Bantug-PMPC</title>
+  @else
+    <title>Bantug-PMPC</title>
+  @endif
 
   {!! Html::style('css/styles.css') !!}
 
@@ -27,7 +31,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">{{ config('blog.title') }} Bantug-PMPC</a>
+      <a class="navbar-brand" href="/">Bantug-PMPC</a>
     </div>
     <div class="collapse navbar-collapse" id="navbar-menu">
       @include('partials.navbar')

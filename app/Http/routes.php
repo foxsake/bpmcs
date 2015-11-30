@@ -16,13 +16,14 @@ Route::get('/', function () {
 });
 
 //test
-Route::get('/github', 'PdfController@github');
+Route::get('github', 'PdfController@github');
 
 //membership application
-Route::get('/apply','ApplicationsController@create');
-Route::post('/apply','ApplicationsController@store');
+Route::get('apply','ApplicationsController@create');
+Route::post('apply','ApplicationsController@store');
 
 // Logging in and out
+get('login', 'Auth\AuthController@getLogin');
 get('auth/login', 'Auth\AuthController@getLogin');
 post('auth/login', 'Auth\AuthController@postLogin');
 get('auth/logout', 'Auth\AuthController@getLogout');

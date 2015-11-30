@@ -23,7 +23,7 @@ class CreateMemApplicantsTable extends Migration
             $table->date('bDay');
             $table->string('religion');
             $table->string('civilStatus');
-            $table->string('spouce');
+            $table->string('spouse');
             $table->string('highestEd');
             $table->string('occupation');
 

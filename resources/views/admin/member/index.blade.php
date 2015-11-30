@@ -40,8 +40,8 @@
             <td>{{$app->civilStatus}}</td>
           </tr>
           <tr>
-            <td>Spouce</td>
-            <td>{{$app->spouce}}</td>
+            <td>Spouse</td>
+            <td>{{$app->spouse}}</td>
           </tr>
           <tr>
             <td>Highest Education</td>

@@ -1,7 +1,4 @@
-@extends('master')
-@section('title')
-<title>BPMCS: Apply</title>
-@stop
+@extends('layout')
 @section('content')
 	<div class="container">
 	<h1>Application for Membership</h1>
@@ -77,8 +74,8 @@
 		</div>
 
 		<div class="form-group">
-			{!! Form::label('spouce','Spouce:') !!}
-			{!! Form::text('spouce',null,['class' => 'form-control'])!!}
+			{!! Form::label('spouse','Spouse:') !!}
+			{!! Form::text('spouse',null,['class' => 'form-control'])!!}
 		</div>
 
 		</div>
@@ -146,11 +143,14 @@
 			{!! Form::label('ownType','Ownership Type:') !!}
 			{!! Form::text('ownType',null,['class' => 'form-control'])!!}
 		</div>
-		</div>
 
 		<div class="form-group">
 			{!! Form::submit('Submit',['class' => 'form-control btn btn-primary'])!!}
 		</div>
+
+		</div>
+
+		
 	</div>
 	{!! Form::close() !!}
 
