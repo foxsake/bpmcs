@@ -44,8 +44,8 @@ class LedgerController extends Controller
         $ledger = new Ledger();
         $ledger->account_id = $request->id;
         $ledger->curDate = date('Y-m-d');
-        $ledger->particulars = $request->particulars;//todo
-        $ledger->reference = $request->reference;//todo
+        $ledger->particulars = $request->particulars;
+        $ledger->reference = $request->reference;
         if($request->actn=='true'){
             $ledger->avaiment = $request->cash;
             $ledger->principal = 0;
@@ -65,7 +65,11 @@ class LedgerController extends Controller
         
         $ledger->interestPayed = 0.0;
         $ledger->penaltyPayed = 0.0;
+
         $ledger->save();
+        $acc->save();
+
+        flash()->success('Updated Ledger');
 
         return redirect('admin/loans/'.$request->id);
         //dd($request);

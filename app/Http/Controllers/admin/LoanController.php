@@ -8,6 +8,9 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Account;
 use App\Ledger;
+use App\Loan;
+use App\Member;
+use App\Http\Requests\CreateLoanRequest;
 
 class LoanController extends Controller
 {
@@ -19,7 +22,6 @@ class LoanController extends Controller
     public function index()
     {
         $accs = Account::all();
-        //dd($accs);
         return view('admin.loan.index',compact('accs'));
     }
 
@@ -30,7 +32,16 @@ class LoanController extends Controller
      */
     public function create()
     {
-        //
+
+        $members = [];
+        foreach (Member::all() as $member) {
+            $members += [$member->id => $member->name()];
+        }
+        $ltypes = [];
+        foreach (Loan::all() as $loan) {
+            $ltypes += [$loan->id => $loan->name];
+        }
+        return view('admin.loan.create', compact('ltypes','members'));
     }
 
     /**
@@ -39,9 +50,9 @@ class LoanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateLoanRequest $request)
     {
-        //
+        dd($request);
     }
 
     /**

@@ -1,7 +1,9 @@
 @extends('layout')
 
 @section('content')
-  <div class="container">
+<div class="container">
+<a href="/admin/loans/create" class="btn btn-primary">Create</a>
+@if(!empty($accs))
     <table class="table table-bordered table-condensed">
 		<tr>
 			<th>Member</th>
@@ -32,7 +34,7 @@
 				{{$acc->dateGranted->toDateString()}}
 			</td>
 			<td>
-				{{Carbon\Carbon::now()->diffForHumans($acc->dueDate)}}//TODO
+				{{Carbon\Carbon::now()->diffForHumans($acc->dueDate,true)}}
 			</td>
 			<td>
 				{{$acc->comaker}}
@@ -46,5 +48,8 @@
 		</tr>
 		@endforeach
 	</table>
-  </div>
+@else
+	<h3 class="text-danger">None Found.</h3>
+@endif
+</div>
 @stop

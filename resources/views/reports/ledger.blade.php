@@ -1,8 +1,7 @@
-@extends('layout')
+@extends('master')
 
 @section('content')
-  <div class="container">
-  	@include('flash::message')
+  <div class="container-fluid">
   	<h3>{{$acc->member->name()}}</h3>
   	<h4>{{$acc->loan->name}}</h4>
     <table class="table table-bordered table-condensed">
@@ -49,7 +48,5 @@
 		</tr>
 		@endforeach
 	</table>
-	<a href="/print/{{$acc->id}}" class="btn btn-warning pull-right">Print</a>
-	<a href="/admin/ledger/{{$acc->id}}" class="btn btn-primary pull-right">Update</a>
   </div>
 @stop

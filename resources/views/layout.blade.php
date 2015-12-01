@@ -12,6 +12,7 @@
   @endif
 
   {!! Html::style('css/styles.css') !!}
+  {!! Html::script('js/app.js') !!}
 
   <!--[if lt IE 9]>
     <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -41,7 +42,7 @@
 
 @yield('content')
 
-{!! Html::script('js/app.js') !!}
+
 
 </body>
 </html>

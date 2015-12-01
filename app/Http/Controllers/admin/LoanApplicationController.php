@@ -6,6 +6,7 @@ namespace App\Http\Controllers\admin;
 use Request;
 
 use App\Http\Requests;
+use App\Http\Requests\LoanApprovalRequest;
 use App\Http\Controllers\Controller;
 use App\LoanApplication;
 use App\Account;
@@ -40,20 +41,20 @@ class LoanApplicationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LoanApprovalRequest $request)
     {
-        $appli = LoanApplication::findOrFail($request::get('id'));
+        $appli = LoanApplication::findOrFail($request->id);
         //$appli->accepted = $request::get('accept');
         //$appli->save();
         //if($appli->accepted=='true'){
-        if($request::get('accept')=='true'){
+        if($request->accept=='true'){
             $acc = new Account();
             $acc->loan_id = $appli->loan_id;
             $acc->member_id = $appli->member_id;
             $acc->terms = $appli->terms;
             $acc->amountGranted = $appli->amountGranted;
             $acc->comaker = $appli->comaker;
-            $acc->dateGranted = $request::get('date');
+            $acc->dateGranted = $request->date;
             $acc->dueDate = $acc->dateGranted;
             $acc->dueDate->addDays($acc->terms);
             $acc->balance = $acc->amountGranted;
@@ -61,8 +62,8 @@ class LoanApplicationController extends Controller
             $ledger = new Ledger();
             $ledger->account_id = $acc->id;
             $ledger->curDate = date('Y-m-d');
-            $ledger->particulars = 'Emergency';//todo
-            $ledger->reference = 'payroll';//todo
+            $ledger->particulars = $request->particular;
+            $ledger->reference = $request->reference;
             $ledger->avaiment = $acc->amountGranted;
             $ledger->amountPayed = 0;
             $ledger->interestDue = 0.0;

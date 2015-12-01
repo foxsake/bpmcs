@@ -18,6 +18,8 @@ class CreateLoansTable extends Migration
             $table->decimal('intRate',3,2);
             $table->decimal('sFee',3,2);
             $table->decimal('penalty',3,2);
+            $table->boolean('advinterest')->default(false);
+            $table->boolean('amortization')->default(false);
             $table->timestamps();
         });
     }

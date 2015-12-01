@@ -11,6 +11,7 @@ use App\Account;
 use App\Loan;
 use App\Http\Requests\LoanApplicationRequest;
 use App\LoanApplication;
+use App\Ledger;
 
 class RegularController extends Controller
 {
@@ -67,7 +68,10 @@ class RegularController extends Controller
      */
     public function show($id)
     {
-        //TODO
+        $acc = Account::find($id);
+        $ledgers = Ledger::where('account_id',$acc->id)->get();
+        //dd($ledgers);
+        return view('regular.show',compact('ledgers'),compact('acc'));
     }
 
     /**

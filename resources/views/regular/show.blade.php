@@ -50,6 +50,5 @@
 		@endforeach
 	</table>
 	<a href="/print/{{$acc->id}}" class="btn btn-warning pull-right">Print</a>
-	<a href="/admin/ledger/{{$acc->id}}" class="btn btn-primary pull-right">Update</a>
   </div>
 @stop

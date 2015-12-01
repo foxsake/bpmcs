@@ -2,6 +2,7 @@
 
 @section('content')
   <div class="container">
+  <a href="/account/create" class="btn btn-primary">Apply Loan</a>
     <table class="table table-bordered table-condensed">
     <tr>
       <th>Loan</th>
@@ -37,7 +38,7 @@
         {{$acc->balance}}
       </td>
       <td>
-        <a href="/admin/loans/{{$acc->id}}" class="btn btn-primary">View</a>
+        <a href="/account/{{$acc->id}}" class="btn btn-primary">View</a>
       </td>
     </tr>
     @endforeach

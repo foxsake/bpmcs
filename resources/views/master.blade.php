@@ -4,7 +4,6 @@
 	<meta charset="UTF-8">
 	@yield('title')
 	{!! Html::style('css/styles.css') !!}
-	{!! Html::script('js/app.js') !!}
 </head>
 <body>
 	@yield('content')

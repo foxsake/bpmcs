@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class LedgerRequest extends Request
+class LoanApprovalRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,8 @@ class LedgerRequest extends Request
     public function rules()
     {
         return [
-            'particulars' => 'required',
+            'particular' => 'required',
             'reference' => 'required',
-            'cash' => 'required',
-            'actn' => 'required'
         ];
     }
 }

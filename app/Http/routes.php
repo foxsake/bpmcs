@@ -32,6 +32,8 @@ get('auth/logout', 'Auth\AuthController@getLogout');
 Route::group(['middleware' => 'auth'], function(){
     //Route::resource('todo', 'TodoController', ['only' => ['index']]);
     resource('account','RegularController');
+    get('print/test','PrintController@test');
+    get('print/{id}', 'PrintController@printLedger');
 });
 
 
@@ -45,7 +47,6 @@ $router->group([
   resource('admin/members', 'MemberController');
   resource('admin/loans', 'LoanController');
   resource('admin/ledger', 'LedgerController');
-  get('admin/print/{id}','PrintController@printLedger');
   get('admin',function(){
   	return view('admin.home');
   });

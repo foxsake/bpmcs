@@ -38,28 +38,36 @@
           <div class="panel-footer">
           
             {!! Form::open(['class'=>'form-inline']) !!}
-              <input name="id" type="hidden" value="{{$app->id}}">
-              <div class="form-group">
-                {!! Form::label('dateGranted','Date:') !!}
-                {!! Form::input('date','dateGranted',date('Y-m-d'),['class' => 'form-control'])!!}
-              </div>
+              <input name="id" type="hidden" id="aid" value="{{$app->id}}">
               <div class="form-group">
                 {!! Form::label('accept','Verdict: ') !!}
                 <div class="radio">
                     <label>
-                      {!! Form::radio('accept','true',true)!!}
+                      {!! Form::radio('accept','true',true,['class' => 'rButton','id' => $app->id])!!}
                       Accept
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                      {!! Form::radio('accept','false',false)!!}
+                      {!! Form::radio('accept','false',false,['class' => 'rButton','id' => $app->id])!!}
                       Reject
                     </label>
                 </div>
-                <div class="form-group">
-                  {!! Form::submit('Submit',['class' => 'form-control btn btn-primary'])!!}
-                </div>
+              </div>
+              <div class="form-group">
+                {!! Form::label('dateGranted','Date:') !!}
+                {!! Form::input('date','dateGranted',date('Y-m-d'),['class' => 'form-control','id' => 'in1'.$app->id])!!}
+              </div>
+              <div class="form-group">
+                {!! Form::label('reference','Reference:') !!}
+                {!! Form::text('reference',null,['class' => 'form-control ','id' => 'in2'.$app->id])!!}
+              </div>
+              <div class="form-group">
+                {!! Form::label('particular','Particular:') !!}
+                {!! Form::text('particular',null,['class' => 'form-control','id' => 'in3'.$app->id])!!}
+              </div>
+              <div class="form-group">
+                {!! Form::submit('Submit',['class' => 'form-control btn btn-primary'])!!}
               </div>
             {!! Form::close() !!}
           </div>
@@ -68,4 +76,23 @@
     </div>
     @endforeach
   </div>
+  <script>
+  $(document).ready(function(){
+    $( ".rButton" ).change(function() {
+      var id = $(this).attr("id")
+    switch($(this).val()) {
+        case 'true' :
+            $('#in1'+id).prop('disabled',false);
+            $('#in2'+id).prop('disabled',false);
+            $('#in3'+id).prop('disabled',false);
+            break;
+        case 'false' :
+            $('#in1'+id).prop('disabled',true);
+            $('#in2'+id).prop('disabled',true);
+            $('#in3'+id).prop('disabled',true);
+            break;
+    }            
+    });
+  });
+</script>
 @stop
