@@ -35,22 +35,22 @@
 				{{$ledger->reference}}
 			</td>
 			<td class="text-right">
-				{{$ledger->avaiment}}
+				{{number_format($ledger->avaiment,2)}}
 			</td>
 			<td class="text-right">
-				{{$ledger->amountPayed}}
+				{{number_format($ledger->amountPayed,2)}}
 			</td>
 			<td class="text-right">
-				{{$ledger->interestDue}}
+				{{number_format($ledger->interestDue,2)}}
 			</td>
 			<td class="text-right">
-				{{$ledger->penaltyDue}}
+				{{number_format($ledger->penaltyDue,2)}}
 			</td>
 			<td class="text-right">
-				{{$ledger->principal}}
+				{{number_format($ledger->principal,2)}}
 			</td>
 			<td class="text-right">
-				{{$ledger->balance}}
+				{{number_format($ledger->balance,2)}}
 			</td>
 		</tr>
 		@endforeach
