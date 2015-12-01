@@ -2,47 +2,54 @@
 
 @section('content')
   <div class="container-fluid">
-  	<h3>{{$acc->member->name()}}</h3>
-  	<h4>{{$acc->loan->name}}</h4>
+  	<div class="text-center">
+  	<h4><strong>BANTUG PRIMARY MULTI-PURPOSE COOPERATIVE</strong></h4>
+  	<h6>Bantug, Science City of Munoz, Nueva Ecija</h6>
+  	<h6>CDA Registration No.9520-030015533 / CONFIRMATION NO. 724</h6>
+  	</div>
+  	<br>
+  	<h5 class="pull-right">{{\Carbon\Carbon::now()->subDay()->format('l, F j, Y')}}</h5>
+  	<h5>Name of Borrower: <strong>{{$acc->member->name()}}</strong></h5>
+  	<h5>Loan Type: <strong>{{$acc->loan->name}}</strong></h5>
     <table class="table table-bordered table-condensed">
 		<tr>
-			<th>Date</th>
-			<th>Particular</th>
-			<th>Ref</th>
-			<th>Avaiment</th>
-			<th>Payment</th>
-			<th>Interest</th>
-			<th>Penalty</th>
-			<th>Principal</th>
-			<th>Total</th>
+			<th class="text-center">Date</th>
+			<th class="text-center">Particular</th>
+			<th class="text-center">Ref</th>
+			<th class="text-center">Avaiment</th>
+			<th class="text-center">Payment</th>
+			<th class="text-center">Interest</th>
+			<th class="text-center">Penalty</th>
+			<th class="text-center">Principal</th>
+			<th class="text-center">Total</th>
 		</tr>
 		@foreach($ledgers as $ledger)
 			<tr>
-			<td>
+			<td class="text-center">
 				{{$ledger->curDate->toDateString()}}
 			</td>
-			<td>
+			<td class="text-center">
 				{{$ledger->particulars}}
 			</td>
-			<td>
+			<td class="text-center">
 				{{$ledger->reference}}
 			</td>
-			<td>
+			<td class="text-right">
 				{{$ledger->avaiment}}
 			</td>
-			<td>
+			<td class="text-right">
 				{{$ledger->amountPayed}}
 			</td>
-			<td>
+			<td class="text-right">
 				{{$ledger->interestDue}}
 			</td>
-			<td>
+			<td class="text-right">
 				{{$ledger->penaltyDue}}
 			</td>
-			<td>
+			<td class="text-right">
 				{{$ledger->principal}}
 			</td>
-			<td>
+			<td class="text-right">
 				{{$ledger->balance}}
 			</td>
 		</tr>
