@@ -57,10 +57,18 @@ class LedgerController extends Controller
             $ledger->avaiment = 0;   
             $acc->balance -= $request->cash;
             $ledger->balance = $acc->balance;
+            $ledger->amountPayed = $request->cash;
         }
         //daya
         $ledger->amountPayed = 0;
-        $ledger->interestDue = 0.0;
+        $loan = Loan::find($acc->loan_id);
+        if ($loan->advinterest == true) {
+            $interest = ($acc->amountGranted*$loan->intRate*$acc->terms)/360;
+            $ledger->interestDue = $interest;
+        }else{
+            $ledger->interestDue = 0.0;
+        }
+        
         $ledger->penaltyDue = 0.0;
         
         $ledger->interestPayed = 0.0;

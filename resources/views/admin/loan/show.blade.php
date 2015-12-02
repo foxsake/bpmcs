@@ -3,48 +3,48 @@
 @section('content')
   <div class="container">
   	@include('flash::message')
-  	<h3>{{$acc->member->name()}}</h3>
-  	<h4>{{$acc->loan->name}}</h4>
+  	<h3>Name of Borrower: {{$acc->member->name()}}</h3>
+  	<h4>Loan Type: {{$acc->loan->name}}</h4>
     <table class="table table-bordered table-condensed">
 		<tr>
-			<th>Date</th>
-			<th>Particular</th>
-			<th>Ref</th>
-			<th>Avaiment</th>
-			<th>Payment</th>
-			<th>Interest</th>
-			<th>Penalty</th>
-			<th>Principal</th>
-			<th>Total</th>
+			<th class="text-center">Date</th>
+			<th class="text-center">Particular</th>
+			<th class="text-center">Ref</th>
+			<th class="text-center">Avaiment</th>
+			<th class="text-center">Payment</th>
+			<th class="text-center">Interest</th>
+			<th class="text-center">Penalty</th>
+			<th class="text-center">Principal</th>
+			<th class="text-center">Total</th>
 		</tr>
 		@foreach($ledgers as $ledger)
 			<tr>
-			<td>
+			<td class="text-center">
 				{{$ledger->curDate->toDateString()}}
 			</td>
-			<td>
+			<td class="text-center">
 				{{$ledger->particulars}}
 			</td>
-			<td>
+			<td class="text-center">
 				{{$ledger->reference}}
 			</td>
-			<td>
-				{{$ledger->avaiment}}
+			<td class="text-right">
+				{{number_format($ledger->avaiment,2)}}
 			</td>
-			<td>
-				{{$ledger->amountPayed}}
+			<td class="text-right">
+				{{number_format($ledger->amountPayed,2)}}
 			</td>
-			<td>
-				{{$ledger->interestDue}}
+			<td class="text-right">
+				{{number_format($ledger->interestDue,2)}}
 			</td>
-			<td>
-				{{$ledger->penaltyDue}}
+			<td class="text-right">
+				{{number_format($ledger->penaltyDue,2)}}
 			</td>
-			<td>
-				{{$ledger->principal}}
+			<td class="text-right">
+				{{number_format($ledger->principal,2)}}
 			</td>
-			<td>
-				{{$ledger->balance}}
+			<td class="text-right">
+				{{number_format($ledger->balance,2)}}
 			</td>
 		</tr>
 		@endforeach
