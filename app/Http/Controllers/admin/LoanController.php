@@ -6,14 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Account;
-use App\Ledger;
 use App\Loan;
-use App\Member;
-use App\Http\Requests\CreateLoanRequest;
 
 class LoanController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -21,8 +18,8 @@ class LoanController extends Controller
      */
     public function index()
     {
-        $accs = Account::all();
-        return view('admin.loan.index',compact('accs'));
+        $loans = Loan::all();
+        return view('admin.loan.index',compact('loans'));
     }
 
     /**
@@ -32,16 +29,7 @@ class LoanController extends Controller
      */
     public function create()
     {
-
-        $members = [];
-        foreach (Member::all() as $member) {
-            $members += [$member->id => $member->name()];
-        }
-        $ltypes = [];
-        foreach (Loan::all() as $loan) {
-            $ltypes += [$loan->id => $loan->name];
-        }
-        return view('admin.loan.create', compact('ltypes','members'));
+        //
     }
 
     /**
@@ -50,9 +38,9 @@ class LoanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateLoanRequest $request)
+    public function store(Request $request)
     {
-        dd($request);
+        //
     }
 
     /**
@@ -63,10 +51,7 @@ class LoanController extends Controller
      */
     public function show($id)
     {
-        $acc = Account::find($id);
-        $ledgers = Ledger::where('account_id',$acc->id)->get();
-        //dd($ledgers);
-        return view('admin.loan.show',compact('ledgers'),compact('acc'));
+        //
     }
 
     /**

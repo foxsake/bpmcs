@@ -77,28 +77,28 @@
 <body>
 	<div class="container">
 		<div class="memdetails">
-			<h3>name</h3>
-			<h4>address</h4>
+			<h3>{{$acc->member->name()}}</h3>
+			<h4>{{$acc->member->addr}}</h4>
 		</div>
 		<div class="date">
-			<h4>date</h4>
+			<h4>{{\Carbon\Carbon::now()->format('l, F j, Y')}}</h4>
 		</div>
 
 		<div class="content">
-			<h3>loantype</h3>
-			<h3 class="amnt">loan amount</h3>
+			<h3>{{$acc->loan->name}}</h3>
+			<h3 class="amnt">{{number_format($acc->amountGranted,2)}}</h3>
 			<table>
 				<tr>
 					<td>UID</td>
-					<td>theuid</td>
+					<td>0.00</td>
 				</tr>
 				<tr>
 					<td>Service Fee</td>
-					<td>SFee</td>
+					<td>{{number_format($sfee,2)}}</td>
 				</tr>
 				<tr>
 					<td>Insurance Premium</td>
-					<td>0.00</td>
+					<td>{{number_format($insurance,2)}}</td>
 				</tr>
 				<tr>
 					<td>Saving's Deposit</td>
@@ -110,16 +110,16 @@
 				</tr>
 				<tr class="cash">
 					<td>Cash</td>
-					<td>cash</td>
+					<td>{{number_format($net,2)}}</td>
 				</tr>
 			</table>
 		</div>
 		<div class="sub-con">
 			<div class="denom">inwords</div>
-			<div class="cashagain">cashhh</div>
+			<div class="cashagain">{{number_format($net,2)}}</div>
 		</div>
 		<div class="name">
-			<h3>name</h3>
+			<h3>{{$acc->member->name()}}</h3>
 		</div>
 	</div>
 </body>

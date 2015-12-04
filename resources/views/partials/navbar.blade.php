@@ -1,5 +1,8 @@
 <ul class="nav navbar-nav">
   @if (Auth::check()&&Auth::user()->isAdmin())
+    <li @if (Request::is('admin')) class="active" @endif>
+      <a href="/admin">Home</a>
+    </li>
     <li @if (Request::is('admin/applicants*')) class="active" @endif>
       <a href="/admin/applicants">Membership Applications</a>
     </li>
@@ -8,6 +11,9 @@
     </li>
     <li @if (Request::is('admin/applications*')) class="active" @endif>
       <a href="/admin/applications">Loan Applications</a>
+    </li>
+    <li @if (Request::is('admin/accounts*')) class="active" @endif>
+      <a href="/admin/accounts">Accounts</a>
     </li>
     <li @if (Request::is('admin/loans*')) class="active" @endif>
       <a href="/admin/loans">Loans</a>

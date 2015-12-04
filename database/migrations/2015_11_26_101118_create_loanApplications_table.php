@@ -18,10 +18,7 @@ class CreateLoanApplicationsTable extends Migration
             $table->integer('loan_id')->unsigned();
             $table->string('terms');
             $table->string('comaker');
-            //$table->date('dateGranted');
-            //$table->date('dueDate');
             $table->double('amountGranted');
-            //$table->double('balance');
             $table->softDeletes();
             $table->boolean('accepted');
             $table->timestamps();

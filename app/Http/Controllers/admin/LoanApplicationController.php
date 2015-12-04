@@ -68,7 +68,7 @@ class LoanApplicationController extends Controller
             $ledger->amountPayed = 0;
             $ledger->interestDue = 0.0;
             $ledger->penaltyDue = 0.0;
-            $ledger->principal = $acc->amountGranted;
+            $ledger->principal = 0.0;
             $ledger->interestPayed = 0.0;
             $ledger->penaltyPayed = 0.0;
             $ledger->balance = $acc->amountGranted;

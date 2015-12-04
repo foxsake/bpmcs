@@ -34,6 +34,7 @@ Route::group(['middleware' => 'auth'], function(){
     resource('account','RegularController');
     get('print/test','PrintController@test');
     get('print/{id}', 'PrintController@printLedger');
+    get('print/account/tbpd', 'PrintController@accToBePastDue');
 });
 
 
@@ -46,6 +47,7 @@ $router->group([
   resource('admin/applications', 'LoanApplicationController');
   resource('admin/members', 'MemberController');
   resource('admin/loans', 'LoanController');
+  resource('admin/accounts', 'AccountController');
   resource('admin/ledger', 'LedgerController');
   get('admin',function(){
   	return view('admin.home');

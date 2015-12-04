@@ -17,7 +17,7 @@ class MemberController extends Controller
      */
     public function index()
     {
-        $appli = Member::all(); 
+        $appli = Member::orderBy('lName')->get(); 
         return view('admin.member.index',compact('appli'));
     }
 

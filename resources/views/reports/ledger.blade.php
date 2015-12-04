@@ -8,9 +8,10 @@
   	<h6>CDA Registration No.9520-030015533 / CONFIRMATION NO. 724</h6>
   	</div>
   	<br>
-  	<h5 class="pull-right">{{\Carbon\Carbon::now()->subDay()->format('l, F j, Y')}}</h5>
+  	<h5 class="pull-right">{{\Carbon\Carbon::now()->format('l, F j, Y')}}</h5>
   	<h5>Name of Borrower: <strong>{{$acc->member->name()}}</strong></h5>
   	<h5>Loan Type: <strong>{{$acc->loan->name}}</strong></h5>
+  	<h5 class="text-center"><strong>LOAN LEDGER</strong></h5>
     <table class="table table-bordered table-condensed">
 		<tr>
 			<th class="text-center">Date</th>
