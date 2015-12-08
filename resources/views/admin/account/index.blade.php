@@ -40,7 +40,7 @@
 				{{$acc->comaker}}
 			</td>
 			{{--<td>{{$acc->balance}}</td>--}}
-			<td>
+			<td class="text-center">
 				<a href="/admin/accounts/{{$acc->id}}" class="btn btn-primary">View</a>
 			</td>
 		</tr>

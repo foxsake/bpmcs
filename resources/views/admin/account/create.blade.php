@@ -36,7 +36,6 @@
             {!! Form::input('date','dateGranted',date('Y-m-d'),['class' => 'form-control'])!!}
 		</div>
 
-		{{--
 		<div class="form-group">
 			{!! Form::label('amortization','Amortization:') !!}
 			{!! Form::text('amortization',null,['class' => 'form-control'])!!}
@@ -62,7 +61,7 @@
   				</label>
 			</div>
 		</div>
-		--}}
+
 		<div class="form-group">
 			{!! Form::submit('Submit',['class' => 'form-control btn btn-primary'])!!}
 		</div>
@@ -113,8 +112,8 @@
 				<td id="totalv">0.0</td>
 			</tr>
 			<tr class="success">
-				<td>Net Loan</td>
-				<td id="netv">0.0</td>
+				<td><strong>Net Loan</strong></td>
+				<td><strong id="netv">0.0<strong></td>
 			</tr>
 		</table>
 		</div>
@@ -141,6 +140,7 @@
 	var total = 0.0;
 	var net = 0.0;
 	var loans = [
+
 		@foreach($loans as $key=>$loan)
     	{
     		"id":"{{$loan->id}}",
@@ -152,6 +152,7 @@
     	,
     	@endif
     	@endforeach
+    	
 	];
 	$(document).ready(function(){
 		$('#amnt').on('input propertychange paste', function() {

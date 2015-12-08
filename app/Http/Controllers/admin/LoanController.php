@@ -29,7 +29,7 @@ class LoanController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.loan.create');
     }
 
     /**
@@ -40,7 +40,7 @@ class LoanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd('TODO!');
     }
 
     /**
@@ -51,7 +51,7 @@ class LoanController extends Controller
      */
     public function show($id)
     {
-        //
+        //wag na ata ito?
     }
 
     /**
@@ -62,7 +62,7 @@ class LoanController extends Controller
      */
     public function edit($id)
     {
-        //
+        //TDOO
     }
 
     /**
