@@ -36,7 +36,7 @@
             {!! Form::input('date','dateGranted',date('Y-m-d'),['class' => 'form-control'])!!}
 		</div>
 
-		
+		{{--
 		<div class="form-group">
 			{!! Form::label('amortization','Amortization:') !!}
 			{!! Form::text('amortization',null,['class' => 'form-control'])!!}
@@ -62,6 +62,7 @@
   				</label>
 			</div>
 		</div>
+		--}}
 		<div class="form-group">
 			{!! Form::submit('Submit',['class' => 'form-control btn btn-primary'])!!}
 		</div>

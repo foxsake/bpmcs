@@ -89,6 +89,10 @@
 			<h3 class="amnt">{{number_format($acc->amountGranted,2)}}</h3>
 			<table>
 				<tr>
+					<td>Advance Interest</td>
+					<td>{{$advint}}</td>
+				</tr>
+				<tr>
 					<td>UID</td>
 					<td>0.00</td>
 				</tr>

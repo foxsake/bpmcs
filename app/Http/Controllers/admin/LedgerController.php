@@ -46,6 +46,10 @@ class LedgerController extends Controller
         $ledger->curDate = date('Y-m-d');
         $ledger->particulars = $request->particulars;
         $ledger->reference = $request->reference;
+        $ledger->penaltyDue = 0.0;
+        $ledger->interestPayed = 0.0;
+        $ledger->penaltyPayed = 0.0;
+
         if($request->actn=='true'){
             $ledger->avaiment = $request->cash;
             $ledger->principal = 0;
@@ -53,33 +57,82 @@ class LedgerController extends Controller
             $ledger->balance = $acc->balance;
         }
         else{
-            $ledger->principal = $request->cash;
+            $interest = 0;
+            //dd(count($acc->ledgers));
+            //dd(\Carbon\Carbon::now()->diffInDays($acc->dueDate->copy()));
+            //check if due if due give penalty
+            //dd($acc);
+            $diff = \Carbon\Carbon::now()->diffInDays($acc->dueDate->copy(),false);
+            //$diff = $acc->dueDate->diffInDays(\Carbon\Carbon::now(),false);
+            //dd($diff);
+
+            if($diff<0){
+                $ledger->penaltyDue = ($acc->amountGranted * $acc->loan->penalty * abs($diff))/360;
+                $ledger->penaltyPayed = $ledger->penaltyDue;//NOT SURE!!
+            }
+
+            //compute normal interest
+            if(count($acc->ledgers)==1){
+                // $interest = ($acc->amountGranted * $acc->loan->intRate * $acc->terms)/360;         
+                // $interestDue = $interest*($acc->dateGranted->diffInDays(\Carbon\Carbon::now()));
+                //dd($acc->dateGranted->diffInDays(\Carbon\Carbon::now()));
+                $ledger->interestDue = ($acc->amountGranted * $acc->loan->intRate * $acc->dateGranted->diffInDays(\Carbon\Carbon::now()))/360;
+                //dd($ledger->interestDue);
+                //dd($interestDue);
+            }
+
+            //interest if past due and with partial..
+            if($diff<0 && count($acc->ledgers)>1){
+                $ledger->interestDue = ($acc->amountGranted * $acc->loan->intRate * $acc->dateGranted->diffInDays(\Carbon\Carbon::now()))/360;
+                // $interest = ($acc->amountGranted * $acc->loan->intRate * $acc->terms)/360;         
+                // $interestDue = $interest*($acc->dueDate->diffInDays(\Carbon\Carbon::now()));
+            }
+
+            //loan specific actions..
+            switch($acc->loan_id-1){
+                case 0:
+                    //do shit
+                    break;
+                case 1:
+                    //gumagana na
+                    break;
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                    $half = \Carbon\Carbon::now()->diffInDays($acc->dateGranted->copy()->addDays($acc->terms/2),false);
+
+                    $ledger->interestDue = 0;
+                    if($half == 0 || $half<0){
+                        $ledger->interestDue = ($acc->amountGranted * $acc->loan->intRate * abs($half))/360;         
+                    }
+                    break;
+                case 6:
+                    $penaltyDue = 0;
+                    $penaltyPayed = 0;
+
+                    if($diff<0){
+                        $ledger->interestDue = ($acc->amountGranted * $acc->loan->intRate * abs($diff))/360;
+                        $ledger->interestPayed = $ledger->interestDue;
+                    }
+                break;
+            }
+
+            $ledger->principal = $request->cash - ($ledger->penaltyDue + $ledger->interestDue);
             $ledger->avaiment = 0;   
-            $acc->balance -= $request->cash;
+
+            $acc->balance -= $ledger->principal;
             $ledger->balance = $acc->balance;
+
             $ledger->amountPayed = $request->cash;
         }
-        //daya
-        $ledger->amountPayed = 0;
-        $loan = Loan::find($acc->loan_id);
-        if ($loan->advinterest == true) {
-            $interest = ($acc->amountGranted*$loan->intRate*$acc->terms)/360;
-            $ledger->interestDue = $interest;
-        }else{
-            $ledger->interestDue = 0.0;
-        }
-        
-        $ledger->penaltyDue = 0.0;
-        
-        $ledger->interestPayed = 0.0;
-        $ledger->penaltyPayed = 0.0;
 
         $ledger->save();
         $acc->save();
 
         flash()->success('Updated Ledger');
 
-        return redirect('admin/loans/'.$request->id);
+        return redirect('admin/accounts/'.$request->id);
         //dd($request);
     }
 

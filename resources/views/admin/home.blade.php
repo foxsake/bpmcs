@@ -6,12 +6,12 @@
       <div class="col-md-8 col-md-offset-2">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">ADMIN'S HOME PAGE</h3>
+            <h3 class="panel-title">Print Reports</h3>
           </div>
           <div class="panel-body">
-
-            TODO
-
+            <a href="/print/account/tbpd" class="btn btn-warning">Accounts To Be Past Due</a>
+            <a href="/print/account/pd" class="btn btn-warning">Accounts Past Due</a>
+            <a href="/print/sched" class="btn btn-warning">Schedule of Loan Recievable</a>
           </div>
         </div>
       </div>

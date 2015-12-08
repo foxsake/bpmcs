@@ -63,7 +63,8 @@ class AccountController extends Controller
         $acc->dateGranted = $request->dateGranted;
 
         $acc->dueDate = $acc->dateGranted;
-        $acc->dueDate->addDays($acc->terms+1);//tama ba to?
+        $acc->dueDate->addDays($acc->terms+1);
+
         $acc->balance = $acc->amountGranted;
         $acc->save();
         $insurance = 0.0;

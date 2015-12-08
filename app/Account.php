@@ -27,7 +27,7 @@ class Account extends Model
     	return $this->belongsTo('App\Loan');
     }
 
-    public function ledger()
+    public function ledgers()
     {
     	return $this->hasMany('App\Ledger');
     }
