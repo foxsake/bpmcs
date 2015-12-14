@@ -24,7 +24,7 @@ class PrintController extends Controller
     */
     public function accToBePastDue(){
         $days = 31; //# of days compared
-        $accs = Account::whereRaw('datediff(accounts.dueDate,curdate()) <= '.$days)
+        $accs = Account::whereRaw('datediff(accounts.dueDate,curdate()) <= '.$days.' and datediff(accounts.dueDate,curdate()) >= 0')
         ->orderByRaw('datediff(accounts.dueDate,curdate()) ASC')->get();
         $title = "ACCOUNT TO BE PAST DUE IN ".$days." DAYS OR LESS";
         return \PDF::loadHTML(view('reports.account_template',compact('accs','title')))->stream('report.pdf');
@@ -40,7 +40,7 @@ class PrintController extends Controller
         return \PDF::loadHTML(view('reports.account_template',compact('accs','title')))->stream('report.pdf');
     }
 
-    public function test(){
+    public function schedule(){
         $mems = Member::orderBy('lname')->get();
         $totals = array(0,0,0,0,0,0,0);
 
@@ -62,5 +62,11 @@ class PrintController extends Controller
                     
         return \PDF::loadHTML(view('reports.report2',compact('mems','totals')))->setOrientation('landscape')->stream('test.pdf'); 
         //return view('reports.report1');
+    }
+
+    public function accounts(){
+        $accs = Account::all();
+        $title = "ACCOUNTS";
+        return \PDF::loadHTML(view('reports.account_template',compact('accs','title')))->stream('report.pdf');
     }
 }

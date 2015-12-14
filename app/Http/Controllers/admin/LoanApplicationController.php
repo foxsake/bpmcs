@@ -32,7 +32,7 @@ class LoanApplicationController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -61,7 +61,7 @@ class LoanApplicationController extends Controller
             $acc->save();
             $ledger = new Ledger();
             $ledger->account_id = $acc->id;
-            $ledger->curDate = date('Y-m-d');
+            $ledger->curDate = $acc->dateGranted;
             $ledger->particulars = $request->particular;
             $ledger->reference = $request->reference;
             $ledger->avaiment = $acc->amountGranted;

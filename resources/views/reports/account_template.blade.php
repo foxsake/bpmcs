@@ -29,7 +29,7 @@
 			<td class="text-center">
 				{{$acc->loan->name}}
 			</td>
-			<td class="text-right">
+			<td class="text-center">
 				{{$acc->dateGranted->format('M j, Y')}}
 			</td>
 			<td class="text-center">

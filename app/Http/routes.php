@@ -32,7 +32,8 @@ get('auth/logout', 'Auth\AuthController@getLogout');
 Route::group(['middleware' => 'auth'], function(){
     //Route::resource('todo', 'TodoController', ['only' => ['index']]);
     resource('account','RegularController');
-    get('print/sched','PrintController@test');//edit name ng function
+    get('print/accounts','PrintController@accounts');
+    get('print/sched','PrintController@schedule');
     get('print/{id}', 'PrintController@printLedger');
     get('print/account/tbpd', 'PrintController@accToBePastDue');
     get('print/account/pd', 'PrintController@accPastDue');

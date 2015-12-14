@@ -119,7 +119,7 @@
 			</table>
 		</div>
 		<div class="sub-con">
-			<div class="denom">inwords</div>
+			<div class="denom">{{$inwords}}</div>
 			<div class="cashagain">{{number_format($net,2)}}</div>
 		</div>
 		<div class="name">

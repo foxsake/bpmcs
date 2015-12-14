@@ -12,6 +12,7 @@
             <a href="/print/account/tbpd" class="btn btn-warning">Accounts To Be Past Due</a>
             <a href="/print/account/pd" class="btn btn-warning">Accounts Past Due</a>
             <a href="/print/sched" class="btn btn-warning">Schedule of Loan Recievable</a>
+            <a href="/print/accounts" class="btn btn-warning">All Accounts</a>
           </div>
         </div>
       </div>
