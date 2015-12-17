@@ -44,7 +44,7 @@ class DatabaseSeeder extends Seeder
         // App\Loan::create(array('name' => 'A/R Trade Kopia','intRate' => 0, 'sFee' => 0, 'penalty' => 0));
 
 
-        factory('App\MemApplicant',10)->create();
+        //factory('App\MemApplicant',10)->create();
 
         Model::reguard();
     }
