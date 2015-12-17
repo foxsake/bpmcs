@@ -94,7 +94,11 @@ class LedgerController extends Controller
             //loan specific actions..
             switch($acc->loan_id-1){
                 case 0:
-                    //by default is already working how it should
+                    if(count($acc->ledgers)==1){
+                        $ledger->interestDue = ($acc->amountGranted * $acc->loan->intRate * $acc->terms)/360;
+                        $ledger->interestPayed = $ledger->interestDue;
+                        dd($ledger->interestDue);
+                    }
                     break;
                 case 1:
                     //by default is already working how it should
