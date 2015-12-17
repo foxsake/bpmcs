@@ -62,7 +62,8 @@ class LoanController extends Controller
      */
     public function edit($id)
     {
-        //TDOO
+        $loan = Loan::find($id);
+        return view('admin.loan.create',compact($loan));
     }
 
     /**

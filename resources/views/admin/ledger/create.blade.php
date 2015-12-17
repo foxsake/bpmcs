@@ -2,7 +2,7 @@
 
 @section('content')
 	<div class="container">
-	<h1>Loan Application</h1>
+	<h1>Loan Payment</h1>
 
 
 	@include('partials.errors')
