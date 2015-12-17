@@ -51,9 +51,7 @@ $router->group([
   resource('admin/loans', 'LoanController');
   resource('admin/accounts', 'AccountController');
   resource('admin/ledger', 'LedgerController');
-  get('admin',function(){
-  	return view('admin.home');
-  });
+  get('admin','AdminController@index');
   //resource('admin/loans', 'LoanController');
   //resource('admin/tag', 'TagController');
   //get('admin/upload', 'UploadController@index');

@@ -42,6 +42,7 @@ class LedgerController extends Controller
     {
         $acc = Account::find($request->id);
         $ledger = new Ledger();
+        //set default values..
         $ledger->account_id = $request->id;
         $ledger->curDate = date('Y-m-d');
         $ledger->particulars = $request->particulars;
@@ -50,25 +51,26 @@ class LedgerController extends Controller
         $ledger->interestPayed = 0.0;
         $ledger->penaltyPayed = 0.0;
 
-        if($request->actn=='true'){
-            $ledger->avaiment = $request->cash;
-            $ledger->principal = 0;
-            $acc->balance += $request->cash;
-            $ledger->balance = $acc->balance;
-        }
-        else{
+
+        /*
+            removed this part for accepting just payment in updating the ledger.
+            can be restored back to accepting loaning by uncommenting this code
+            and the corresponting code on it's view.
+        */
+        // if($request->actn=='true'){
+        //     $ledger->avaiment = $request->cash;
+        //     $ledger->principal = 0;
+        //     $acc->balance += $request->cash;
+        //     $ledger->balance = $acc->balance;
+        // }
+        // else{
             $interest = 0;
-            //dd(count($acc->ledgers));
-            //dd(\Carbon\Carbon::now()->diffInDays($acc->dueDate->copy()));
             //check if due if due give penalty
-            //dd($acc);
             $diff = \Carbon\Carbon::now()->diffInDays($acc->dueDate->copy(),false);
-            //$diff = $acc->dueDate->diffInDays(\Carbon\Carbon::now(),false);
-            //dd($diff);
 
             if($diff<0){
                 $ledger->penaltyDue = ($acc->amountGranted * $acc->loan->penalty * abs($diff))/360;
-                $ledger->penaltyPayed = $ledger->penaltyDue;//NOT SURE!!
+                $ledger->penaltyPayed = $ledger->penaltyDue;
             }
 
             //compute normal interest
@@ -76,6 +78,7 @@ class LedgerController extends Controller
                 // $interest = ($acc->amountGranted * $acc->loan->intRate * $acc->terms)/360;         
                 // $interestDue = $interest*($acc->dateGranted->diffInDays(\Carbon\Carbon::now()));
                 //dd($acc->dateGranted->diffInDays(\Carbon\Carbon::now()));
+                //ditoo
                 $ledger->interestDue = ($acc->amountGranted * $acc->loan->intRate * $acc->dateGranted->diffInDays(\Carbon\Carbon::now()))/360;
                 //dd($ledger->interestDue);
                 //dd($interestDue);
@@ -91,10 +94,10 @@ class LedgerController extends Controller
             //loan specific actions..
             switch($acc->loan_id-1){
                 case 0:
-                    //do shit
+                    //by default is already working how it should
                     break;
                 case 1:
-                    //gumagana na
+                    //by default is already working how it should
                     break;
                 case 2:
                 case 3:
@@ -125,7 +128,7 @@ class LedgerController extends Controller
             $ledger->balance = $acc->balance;
 
             $ledger->amountPayed = $request->cash;
-        }
+        //}
 
         $ledger->save();
         $acc->save();
@@ -133,7 +136,6 @@ class LedgerController extends Controller
         flash()->success('Updated Ledger');
 
         return redirect('admin/accounts/'.$request->id);
-        //dd($request);
     }
 
     /**

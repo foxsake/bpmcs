@@ -27,7 +27,6 @@ class LedgerRequest extends Request
             'particulars' => 'required',
             'reference' => 'required',
             'cash' => 'required',
-            'actn' => 'required'
         ];
     }
 }

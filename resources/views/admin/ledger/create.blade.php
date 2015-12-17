@@ -26,6 +26,7 @@
 			{!! Form::label('cash','Cash:') !!}
 			{!! Form::text('cash',null,['class' => 'form-control'])!!}
 		</div>
+		{{--
 		<div class="form-group">
 			{!! Form::label('actn','Action: ') !!}
 			<div class="radio">
@@ -37,16 +38,18 @@
 			<div class="radio">
   				<label>
     				{!! Form::radio('actn','false',false)!!}
-    				SUBTRACT
+    				PAYMENT
   				</label>
 			</div>
 		</div>
-
-		</div>
-
+		--}}
 		<div class="form-group">
 			{!! Form::submit('Submit',['class' => 'form-control btn btn-primary'])!!}
 		</div>
+
+		</div>
+
+		
 	</div>
 	{!! Form::close() !!}
 
