@@ -9,7 +9,44 @@
             <p>{!! Html::link('/apply','Apply Now!') !!}</p>
         </div>
     </div>
+<div class="container">
+    <div id="myTabs">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#vision" aria-controls="vision" role="tab" data-toggle="tab">Vision</a></li>
+    <li role="presentation"><a href="#mission" aria-controls="mission" role="tab" data-toggle="tab">Mission</a></li>
+    <li role="presentation"><a href="#goals" aria-controls="goals" role="tab" data-toggle="tab">Goals</a></li>
+    <li role="presentation"><a href="#cval" aria-controls="corval" role="tab" data-toggle="tab">Core Values</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="vision">
+        A stable and developed cooperative with members that are committed and enjoying the rights and privileges of being a member
+    </div>
+    <div role="tabpanel" class="tab-pane" id="mission">
+        To undertake the programs/acttivities with the cooperation of all members of the cooperative
+    </div>
+    
+    <div role="tabpanel" class="tab-pane" id="goals">
+        *Uplift the standard of living of at least 75% of the total membership
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="cval">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore quod itaque incidunt consectetur pariatur voluptatibus, quae omnis numquam, excepturi repellendus molestias officiis nisi, recusandae, architecto corporis veniam eaque minus dignissimos?
+    </div>
+  </div>
+
+    </div>
+    </div>
+
     <script>
         $('#flash-overlay-modal').modal();
+        $('#myTabs a:first').tab('show')
+        $('#myTabs a').click(function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        })
     </script>
 @stop
