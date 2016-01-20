@@ -6,7 +6,7 @@
         <div class="content">
             <div class="title">Bantug Primary Multi-Purpose Cooperative</div>
             <div class="subtitle">Purok Centro, Bantug, Science City of Munoz, N.E.</div>
-            <p>{!! Html::link('/apply','Apply Now!') !!}</p>
+            <p>{!! Html::link('/apply','Apply for Membership Now!') !!}</p>
         </div>
     </div>
 <div class="container">
@@ -34,7 +34,15 @@
     </div>
 
     <div role="tabpanel" class="tab-pane" id="cval">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore quod itaque incidunt consectetur pariatur voluptatibus, quae omnis numquam, excepturi repellendus molestias officiis nisi, recusandae, architecto corporis veniam eaque minus dignissimos?
+        <ul class="list-group">
+          <li class="list-group-item"><strong>R</strong>ESPECT TO GOD</li>
+          <li class="list-group-item"><strong>E</strong>QUITY</li>
+          <li class="list-group-item"><strong>S</strong>OCIAL RESPONSILITY</li>
+          <li class="list-group-item"><strong>P</strong>ATRONAGE</li>
+          <li class="list-group-item"><strong>E</strong>NDURANCE</li>
+          <li class="list-group-item"><strong>C</strong>OOPERATION</li>
+          <li class="list-group-item"><strong>T</strong>RUST</li>
+        </ul>
     </div>
   </div>
 
